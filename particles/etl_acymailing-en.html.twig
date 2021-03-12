@@ -1,0 +1,48 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+<div class="{{ particle.class|e }}">
+	<div class="etl-acy-newsletter">
+	<div class="{{ particle.placeholder|raw }} {{ particle.buttonradius|raw }}">
+	{% if particle.title %}<div class="g-title"><h2>{{ particle.title|raw }}</h2></div>{% endif %}
+
+	{% if particle.headtext %}<div class="etl-acy-newsletter-headtext">{{ particle.headtext|raw }}</div>{% endif %}
+		<form class="etl-acy-newsletter-form" action="index.php?option=com_acymailing&ctrl=sub" method="post">
+	{% if particle.layout == "layout-mail" %}
+		<input class="etl-acy-newsletter-inputboxemail-1" type="text" placeholder="{{ particle.inputboxemail|raw }}" name="user[email]">
+		<input type="submit" name="Submit" class="etl-acy-newsletter-button-1 button {{ particle.buttonclass|e }}" value="{{ particle.buttontext|raw }}">
+	{% endif %}
+	{% if particle.layout == "layout-mail-name" %}
+		<input class="etl-acy-newsletter-inputboxname-2" type="text" placeholder="{{ particle.inputboxname|raw }}" name="user[name]">
+		<input class="etl-acy-newsletter-inputboxemail-2" type="text" placeholder="{{ particle.inputboxemail|raw }}" name="user[email]">
+		<input type="submit" name="Submit" class="etl-acy-newsletter-button-2 button {{ particle.buttonclass|e }}" value="{{ particle.buttontext|raw }}">
+	{% endif %}
+	{% if particle.layout == "layout-compact" %}
+		<div class="etl-acy-newsletter-compact-wrapper">
+			<div class="etl-acy-newsletter-inputboxemail-compact">
+				<input type="text" placeholder="{{ particle.inputboxemail|raw }}" name="user[email]">
+			</div>
+			<div class="etl-acy-newsletter-button-compact">
+				<div class="etl-acy-newsletter-button-compact-submit">
+					<input type="submit" name="Submit" class="etl-acy-newsletter-button-compact-icon button {{ particle.buttonclass|e }}" value="&#xf1d8;">
+				</div>	
+			</div>
+		</div>
+	{% endif %}
+	{% if particle.layout == "layout-compact-text" %}
+		<input class="etl-acy-newsletter-inputboxemail-compact-text" type="text" placeholder="{{ particle.inputboxemail|raw }}" name="user[email]">
+		<input type="submit" name="Submit" class="etl-acy-newsletter-button-compact-text button {{ particle.buttonclass|e }}" value="{{ particle.buttontext|raw }}">
+	{% endif %}
+		<input type="hidden" name="acyformname" value="formAcymailing1" />
+ 		<input type="hidden" name="ctrl" value="sub"/>
+ 		<input type="hidden" name="task" value="optin"/>
+ 		<input type="hidden" name="redirect" value="{{ gantry.siteUrl() }}"/>
+ 		<input type="hidden" name="option" value="com_acymailing"/>
+ 		<input type="hidden" name="visiblelists" value=""/>
+ 		<input type="hidden" name="hiddenlists" value="{{ particle.your_list|raw }}"/>
+	</form>
+		{% if particle.foottext %}<div class="etl-acy-newsletter-foottext">{{ particle.foottext|raw }}</div>{% endif %}
+	</div>
+	</div>
+</div>
+{% endblock %}
