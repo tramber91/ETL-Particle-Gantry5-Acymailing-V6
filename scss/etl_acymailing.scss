@@ -149,7 +149,7 @@
     .etl-acy-newsletter-inputboxemail-compact {
         input {
       color: $base-background;
-            border: 2px solid fadeout($white, 75%);
+            border: 2px solid fadeout($white, .75);
             background: transparent;
             padding: 0 $content-padding;
             margin-bottom: 0;
